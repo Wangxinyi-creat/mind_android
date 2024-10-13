@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pj.mind.mapper.MindMessageMapper">
+
+    <resultMap type="MindMessage" id="MindMessageResult">
+        <result property="messageId"    column="message_id"    />
+        <result property="senderId"    column="sender_id"    />
+        <result property="recipientId"    column="recipient_id"    />
+        <result property="recordId"    column="record_id"    />
+        <result property="messageContent"    column="message_content"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectMindMessageVo">
+        select message_id, sender_id, recipient_id, record_id, message_content, create_by, create_time, update_by, update_time from mind_message
+    </sql>
+
+    <select id="selectMindMessageList" parameterType="MindMessage" resultMap="MindMessageResult">
+        <include refid="selectMindMessageVo"/>
+        <where>
+        </where>
+    </select>
+
+    <select id="selectMindMessageByMessageIdNext" resultType="long" resultMap="MindMessageResult">
+        <include refid="selectMindMessageVo"/>
+        where message_id > #{messageId} and record_id = #{recordId} order by message_id asc
+    </select>
+
+    <select id="selectMindMessageListAll" parameterType="MindMessage" resultMap="MindMessageResult">
+        <include refid="selectMindMessageVo"/>
+        <where>
+            <if test="recordId != null and recordId > 0">record_id = #{recordId}</if>
+            order by message_id asc
+        </where>
+    </select>
+
+    <select id="selectMindMessageByMessageId" parameterType="Long" resultMap="MindMessageResult">
+        <include refid="selectMindMessageVo"/>
+        where message_id = #{messageId}
+    </select>
+
+    <insert id="insertMindMessage" parameterType="MindMessage" useGeneratedKeys="true" keyProperty="messageId">
+        insert into mind_message
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="senderId != null">sender_id,</if>
+            <if test="recipientId != null">recipient_id,</if>
+            <if test="recordId != null">record_id,</if>
+            <if test="messageContent != null and messageContent != ''">message_content,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="senderId != null">#{senderId},</if>
+            <if test="recipientId != null">#{recipientId},</if>
+            <if test="recordId != null">#{recordId},</if>
+            <if test="messageContent != null and messageContent != ''">#{messageContent},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMindMessage" parameterType="MindMessage">
+        update mind_message
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="senderId != null">sender_id = #{senderId},</if>
+            <if test="recipientId != null">recipient_id = #{recipientId},</if>
+            <if test="recordId != null">record_id = #{recordId},</if>
+            <if test="messageContent != null and messageContent != ''">message_content = #{messageContent},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where message_id = #{messageId}
+    </update>
+
+    <delete id="deleteMindMessageByMessageId" parameterType="Long">
+        delete from mind_message where message_id = #{messageId}
+    </delete>
+
+    <delete id="deleteMindMessageByMessageIds" parameterType="String">
+        delete from mind_message where message_id in
+        <foreach item="messageId" collection="array" open="(" separator="," close=")">
+            #{messageId}
+        </foreach>
+    </delete>
+</mapper>

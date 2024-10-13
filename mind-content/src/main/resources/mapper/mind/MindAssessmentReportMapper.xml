@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pj.mind.mapper.MindAssessmentReportMapper">
+
+    <resultMap type="MindAssessmentReport" id="MindAssessmentReportResult">
+        <result property="reportId"    column="report_id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="assessmentId"    column="assessment_id"    />
+        <result property="assessmentName"    column="assessment_name"    />
+        <result property="result"    column="result"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectMindAssessmentReportVo">
+        select report_id, user_id, assessment_id, assessment_name, result, create_by, create_time, update_by, update_time from mind_assessment_report
+    </sql>
+
+    <select id="selectMindAssessmentReportList" parameterType="MindAssessmentReport" resultMap="MindAssessmentReportResult">
+        <include refid="selectMindAssessmentReportVo"/>
+        <where>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="assessmentId != null "> and assessment_id = #{assessmentId}</if>
+            <if test="assessmentName != null  and assessmentName != ''"> and assessment_name like concat('%', #{assessmentName}, '%')</if>
+            <if test="result != null  and result != ''"> and result = #{result}</if>
+        </where>
+    </select>
+
+    <select id="selectMindAssessmentReportByReportId" parameterType="Long" resultMap="MindAssessmentReportResult">
+        <include refid="selectMindAssessmentReportVo"/>
+        where report_id = #{reportId}
+    </select>
+
+    <insert id="insertMindAssessmentReport" parameterType="MindAssessmentReport" useGeneratedKeys="true" keyProperty="reportId">
+        insert into mind_assessment_report
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">user_id,</if>
+            <if test="assessmentId != null">assessment_id,</if>
+            <if test="assessmentName != null and assessmentName != ''">assessment_name,</if>
+            <if test="result != null and result != ''">result,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">#{userId},</if>
+            <if test="assessmentId != null">#{assessmentId},</if>
+            <if test="assessmentName != null and assessmentName != ''">#{assessmentName},</if>
+            <if test="result != null and result != ''">#{result},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+        </trim>
+    </insert>
+
+    <update id="updateMindAssessmentReport" parameterType="MindAssessmentReport">
+        update mind_assessment_report
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="assessmentId != null">assessment_id = #{assessmentId},</if>
+            <if test="assessmentName != null and assessmentName != ''">assessment_name = #{assessmentName},</if>
+            <if test="result != null and result != ''">result = #{result},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where report_id = #{reportId}
+    </update>
+
+    <delete id="deleteMindAssessmentReportByReportId" parameterType="Long">
+        delete from mind_assessment_report where report_id = #{reportId}
+    </delete>
+
+    <delete id="deleteMindAssessmentReportByReportIds" parameterType="String">
+        delete from mind_assessment_report where report_id in
+        <foreach item="reportId" collection="array" open="(" separator="," close=")">
+            #{reportId}
+        </foreach>
+    </delete>
+</mapper>

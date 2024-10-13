@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pj.mind.mapper.MindArticleMapper">
+    
+    <resultMap type="MindArticle" id="MindArticleResult">
+        <result property="id"    column="id"    />
+        <result property="categoryId"    column="category_id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="title"    column="title"    />
+        <result property="content"    column="content"    />
+        <result property="isVideo"    column="isVideo"    />
+        <result property="videoUrl"    column="video_url"    />
+        <result property="views"    column="views"    />
+        <result property="likes"    column="likes"    />
+        <result property="comments"    column="comments"    />
+        <result property="anonymous"    column="anonymous"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectMindArticleVo">
+        select id, category_id, user_id, title, content, isVideo, video_url, views, likes, comments, anonymous, create_by, create_time, update_by, update_time from mind_article
+    </sql>
+
+    <select id="selectMindArticleList" parameterType="MindArticle" resultMap="MindArticleResult">
+        <include refid="selectMindArticleVo"/>
+        <where>  
+            <if test="categoryId != null "> and category_id = #{categoryId}</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="isVideo != null "> and isVideo = #{isVideo}</if>
+        </where>
+    </select>
+    
+    <select id="selectMindArticleById" parameterType="Long" resultMap="MindArticleResult">
+        <include refid="selectMindArticleVo"/>
+        where id = #{id}
+    </select>
+    <select id="selectMindArticleListVideoByIds" resultType="com.pj.mind.domain.MindArticle">
+        <include refid="selectMindArticleVo"/>
+        where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+    <insert id="insertMindArticle" parameterType="MindArticle" useGeneratedKeys="true" keyProperty="id">
+        insert into mind_article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="categoryId != null">category_id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="title != null and title != ''">title,</if>
+            <if test="content != null">content,</if>
+            <if test="isVideo != null">isVideo,</if>
+            <if test="videoUrl != null">video_url,</if>
+            <if test="views != null">views,</if>
+            <if test="likes != null">likes,</if>
+            <if test="comments != null">comments,</if>
+            <if test="anonymous != null">anonymous,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="categoryId != null">#{categoryId},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="title != null and title != ''">#{title},</if>
+            <if test="content != null">#{content},</if>
+            <if test="isVideo != null">#{isVideo},</if>
+            <if test="videoUrl != null">#{videoUrl},</if>
+            <if test="views != null">#{views},</if>
+            <if test="likes != null">#{likes},</if>
+            <if test="comments != null">#{comments},</if>
+            <if test="anonymous != null">#{anonymous},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMindArticle" parameterType="MindArticle">
+        update mind_article
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="categoryId != null">category_id = #{categoryId},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="title != null and title != ''">title = #{title},</if>
+            <if test="content != null">content = #{content},</if>
+            <if test="isVideo != null">isVideo = #{isVideo},</if>
+            <if test="videoUrl != null">video_url = #{videoUrl},</if>
+            <if test="views != null">views = #{views},</if>
+            <if test="likes != null">likes = #{likes},</if>
+            <if test="comments != null">comments = #{comments},</if>
+            <if test="anonymous != null">anonymous = #{anonymous},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMindArticleById" parameterType="Long">
+        delete from mind_article where id = #{id}
+    </delete>
+
+    <delete id="deleteMindArticleByIds" parameterType="String">
+        delete from mind_article where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

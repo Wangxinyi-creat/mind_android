@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pj.mind.mapper.MindCounselorMapper">
+
+    <resultMap type="MindCounselor" id="MindCounselorResult">
+        <result property="counselorId"    column="counselor_id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="counselorName"    column="counselor_name"    />
+        <result property="counselorLevel"    column="counselor_level"    />
+        <result property="education"    column="education"    />
+        <result property="speciality"    column="speciality"    />
+        <result property="availableTime1"    column="available_time1"    />
+        <result property="availableTime2"    column="available_time2"    />
+        <result property="availableWeek"    column="available_week"    />
+        <result property="picUrl"    column="pic_url"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectMindCounselorVo">
+        select counselor_id, user_id, counselor_name,pic_url, counselor_level, education, speciality, available_time1,available_time2, available_week, create_by, create_time, update_by, update_time from mind_counselor
+    </sql>
+
+    <select id="selectMindCounselorList" parameterType="MindCounselor" resultMap="MindCounselorResult">
+        <include refid="selectMindCounselorVo"/>
+        <where>
+            <if test="counselorName != null  and counselorName != ''"> and counselor_name like concat('%', #{counselorName}, '%')</if>
+            <if test="availableWeek != null  and availableWeek != ''"> and available_week like concat('%', #{availableWeek}, '%')</if>
+        </where>
+    </select>
+
+    <select id="selectMindCounselorByCounselorId" parameterType="Long" resultMap="MindCounselorResult">
+        <include refid="selectMindCounselorVo"/>
+        where counselor_id = #{counselorId}
+    </select>
+    <select id="selectMindCounselorByUserId" parameterType="Long" resultMap="MindCounselorResult">
+        <include refid="selectMindCounselorVo"/>
+        where user_id = #{userId}
+    </select>
+
+    <insert id="insertMindCounselor" parameterType="MindCounselor" useGeneratedKeys="true" keyProperty="counselorId">
+        insert into mind_counselor
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">user_id,</if>
+            <if test="counselorName != null and counselorName != ''">counselor_name,</if>
+            <if test="counselorLevel != null">counselor_level,</if>
+            <if test="education != null and education != ''">education,</if>
+            <if test="speciality != null and speciality != ''">speciality,</if>
+            <if test="availableTime1 != null ">available_time1,</if>
+            <if test="availableTime2 != null ">available_time2,</if>
+            <if test="availableWeek != null and availableWeek != ''">available_week,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="picUrl != null">pic_url,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">#{userId},</if>
+            <if test="counselorName != null and counselorName != ''">#{counselorName},</if>
+            <if test="counselorLevel != null">#{counselorLevel},</if>
+            <if test="education != null and education != ''">#{education},</if>
+            <if test="speciality != null and speciality != ''">#{speciality},</if>
+            <if test="availableTime1 != null ">#{availableTime1},</if>
+            <if test="availableTime2 != null ">#{availableTime2},</if>
+            <if test="availableWeek != null and availableWeek != ''">#{availableWeek},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="picUrl != null">#{picUrl},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMindCounselor" parameterType="MindCounselor">
+        update mind_counselor
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="counselorName != null and counselorName != ''">counselor_name = #{counselorName},</if>
+            <if test="counselorLevel != null">counselor_level = #{counselorLevel},</if>
+            <if test="education != null and education != ''">education = #{education},</if>
+            <if test="speciality != null and speciality != ''">speciality = #{speciality},</if>
+            <if test="availableTime1 != null and availableTime1 != ''">available_time1 = #{availableTime1},</if>
+            <if test="availableTime2 != null and availableTime2 != ''">available_time2 = #{availableTime2},</if>
+            <if test="availableWeek != null and availableWeek != ''">available_week = #{availableWeek},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="picUrl != null">pic_url = #{picUrl},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where counselor_id = #{counselorId}
+    </update>
+
+    <delete id="deleteMindCounselorByCounselorId" parameterType="Long">
+        delete from mind_counselor where counselor_id = #{counselorId}
+    </delete>
+
+    <delete id="deleteMindCounselorByCounselorIds" parameterType="String">
+        delete from mind_counselor where counselor_id in
+        <foreach item="counselorId" collection="array" open="(" separator="," close=")">
+            #{counselorId}
+        </foreach>
+    </delete>
+</mapper>

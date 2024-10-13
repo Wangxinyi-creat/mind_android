@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pj.mind.mapper.MindActivityRecordMapper">
+
+    <resultMap type="MindActivityRecord" id="MindActivityRecordResult">
+        <result property="recordId"    column="record_id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="activityId"    column="activity_id"    />
+    </resultMap>
+
+    <sql id="selectMindActivityRecordVo">
+        select record_id, user_id, activity_id from mind_activity_record
+    </sql>
+
+    <select id="selectMindActivityRecordList" parameterType="MindActivityRecord" resultMap="MindActivityRecordResult">
+        <include refid="selectMindActivityRecordVo"/>
+        <where>
+            <if test="activityId != null  and activityId != 0"> and activity_id = #{activityId}</if>
+            <if test="userId != null  and userId != 0"> and user_id = #{userId}</if>
+        </where>
+    </select>
+
+    <select id="selectMindActivityRecordByRecordId" parameterType="Long" resultMap="MindActivityRecordResult">
+        <include refid="selectMindActivityRecordVo"/>
+        where record_id = #{recordId}
+    </select>
+
+    <insert id="insertMindActivityRecord" parameterType="MindActivityRecord" useGeneratedKeys="true" keyProperty="recordId">
+        insert into mind_activity_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">user_id,</if>
+            <if test="activityId != null">activity_id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">#{userId},</if>
+            <if test="activityId != null">#{activityId},</if>
+        </trim>
+    </insert>
+
+    <update id="updateMindActivityRecord" parameterType="MindActivityRecord">
+        update mind_activity_record
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="activityId != null">activity_id = #{activityId},</if>
+        </trim>
+        where record_id = #{recordId}
+    </update>
+
+    <delete id="deleteMindActivityRecordByRecordId" parameterType="Long">
+        delete from mind_activity_record where record_id = #{recordId}
+    </delete>
+
+    <delete id="deleteMindActivityRecordByRecordIds" parameterType="String">
+        delete from mind_activity_record where activityId in
+        <foreach item="recordId" collection="array" open="(" separator="," close=")">
+            #{activityId}
+        </foreach>
+    </delete>
+
+    <delete id="deleteMindActivityRecordByActivityIds" parameterType="String">
+        delete from mind_activity_record where activity_id in
+        <foreach item="recordId" collection="array" open="(" separator="," close=")">
+            #{recordId}
+        </foreach>
+    </delete>
+</mapper>

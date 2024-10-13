@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pj.mind.mapper.MindCounselorRecordMapper">
+
+    <resultMap type="MindCounselorRecord" id="MindCounselorRecordResult">
+        <result property="recordId"    column="record_id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="counselorId"    column="counselor_id"    />
+        <result property="appointmentTime"    column="appointment_time"    />
+        <result property="availableLoc"    column="available_loc"    />
+        <result property="name"    column="name"    />
+        <result property="college"    column="college"    />
+        <result property="collegeClass"    column="college_class"    />
+        <result property="phone"    column="phone"    />
+        <result property="appointmentStatus"    column="appointment_status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectMindCounselorRecordVo">
+        select record_id, user_id, counselor_id, appointment_time, available_loc, name, college, college_class, phone, appointment_status, create_by, create_time, update_by, update_time from mind_counselor_record
+    </sql>
+
+    <select id="selectMindCounselorRecordList" parameterType="MindCounselorRecord" resultMap="MindCounselorRecordResult">
+        <include refid="selectMindCounselorRecordVo"/>
+        <where>
+            <if test="counselorId != null "> and counselor_id = #{counselorId}</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="availableLoc != null  and availableLoc != ''"> and available_loc = #{availableLoc}</if>
+            <if test="appointmentStatus != null and appointmentStatus != -1"> and appointment_status = #{appointmentStatus}</if>
+        </where>
+    </select>
+
+    <select id="selectMindCounselorRecordByRecordId" parameterType="Long" resultMap="MindCounselorRecordResult">
+        <include refid="selectMindCounselorRecordVo"/>
+        where record_id = #{recordId}
+    </select>
+
+    <insert id="insertMindCounselorRecord" parameterType="MindCounselorRecord" useGeneratedKeys="true" keyProperty="recordId">
+        insert into mind_counselor_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">user_id,</if>
+            <if test="counselorId != null">counselor_id,</if>
+            <if test="appointmentTime != null">appointment_time,</if>
+            <if test="availableLoc != null and availableLoc != ''">available_loc,</if>
+            <if test="name != null">name,</if>
+            <if test="college != null">college,</if>
+            <if test="collegeClass != null">college_class,</if>
+            <if test="phone != null">phone,</if>
+            <if test="appointmentStatus != null">appointment_status,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">#{userId},</if>
+            <if test="counselorId != null">#{counselorId},</if>
+            <if test="appointmentTime != null">#{appointmentTime},</if>
+            <if test="availableLoc != null and availableLoc != ''">#{availableLoc},</if>
+            <if test="name != null">#{name},</if>
+            <if test="college != null">#{college},</if>
+            <if test="collegeClass != null">#{collegeClass},</if>
+            <if test="phone != null">#{phone},</if>
+            <if test="appointmentStatus != null">#{appointmentStatus},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+        </trim>
+    </insert>
+
+    <update id="updateMindCounselorRecord" parameterType="MindCounselorRecord">
+        update mind_counselor_record
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="counselorId != null">counselor_id = #{counselorId},</if>
+            <if test="appointmentTime != null">appointment_time = #{appointmentTime},</if>
+            <if test="availableLoc != null and availableLoc != ''">available_loc = #{availableLoc},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="college != null">college = #{college},</if>
+            <if test="collegeClass != null">college_class = #{collegeClass},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="appointmentStatus != null">appointment_status = #{appointmentStatus},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where record_id = #{recordId}
+    </update>
+
+    <delete id="deleteMindCounselorRecordByRecordId" parameterType="Long">
+        delete from mind_counselor_record where record_id = #{recordId}
+    </delete>
+
+    <delete id="deleteMindCounselorRecordByRecordIds" parameterType="String">
+        delete from mind_counselor_record where record_id in
+        <foreach item="recordId" collection="array" open="(" separator="," close=")">
+            #{recordId}
+        </foreach>
+    </delete>
+</mapper>

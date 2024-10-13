@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pj.mind.mapper.MindArticleCommentMapper">
+    
+    <resultMap type="MindArticleComment" id="MindArticleCommentResult">
+        <result property="id"    column="id"    />
+        <result property="articleId"    column="article_id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="content"    column="content"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectMindArticleCommentVo">
+        select id, article_id, user_id, content, create_time, update_time from mind_article_comment
+    </sql>
+
+    <select id="selectMindArticleCommentList" parameterType="MindArticleComment" resultMap="MindArticleCommentResult">
+        <include refid="selectMindArticleCommentVo"/>
+        <where>  
+            <if test="articleId != null "> and article_id = #{articleId}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+        </where>
+    </select>
+    
+    <select id="selectMindArticleCommentById" parameterType="Long" resultMap="MindArticleCommentResult">
+        <include refid="selectMindArticleCommentVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertMindArticleComment" parameterType="MindArticleComment" useGeneratedKeys="true" keyProperty="id">
+        insert into mind_article_comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="articleId != null">article_id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="content != null">content,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="articleId != null">#{articleId},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="content != null">#{content},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMindArticleComment" parameterType="MindArticleComment">
+        update mind_article_comment
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="articleId != null">article_id = #{articleId},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="content != null">content = #{content},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMindArticleCommentById" parameterType="Long">
+        delete from mind_article_comment where id = #{id}
+    </delete>
+
+    <delete id="deleteMindArticleCommentByIds" parameterType="String">
+        delete from mind_article_comment where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
