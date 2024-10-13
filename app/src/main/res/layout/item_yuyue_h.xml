@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/dp_149"
+    android:layout_height="@dimen/dp_158"
+    app:cardCornerRadius="@dimen/dp_12"
+    android:layout_marginRight="@dimen/dp_24"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="@dimen/dp_149"
+        android:layout_height="@dimen/dp_158"
+        android:background="@drawable/bg_gi_f4af72_s_bbb"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_8">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.pj.mind.view.CircleImageView
+                android:id="@+id/iv_touxiang"
+                android:layout_width="@dimen/dp_48"
+                android:layout_height="@dimen/dp_48"
+                android:layout_centerInParent="true"
+                android:src="@drawable/bg_touxiang" />
+
+            <TextView
+                android:id="@+id/tv_man"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="已满"
+                android:textColor="#5C9267"
+                android:textSize="@dimen/sp_12"
+                android:visibility="gone"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="彭于晏"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="@drawable/bg_gi_efefef_s_bbb"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_8">
+
+            <TextView
+                android:id="@+id/tv_time1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="上午9：00-10：00"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/tv_time2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_6"
+                android:text="下午15：00-16：00"
+                android:textSize="@dimen/sp_12" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

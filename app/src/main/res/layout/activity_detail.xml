@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/textView"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="“倾听心灵之声，关爱自我成长”"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dp_20" />
+
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/textView2"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="心理健康讲座顺利开展"
+        android:textSize="@dimen/dp_20" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="发布时间：2024年4月2日14：35" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="        大学生心理健康教育中心主任张玉桃从心理健康、心理咨询、自我关怀等三个方面进行了讲解。她鼓励大家要关注自己的心理健康，通过此次讲座来学会应对学习、生活中所面临的困扰以及环境适应和融入等困惑和问题，也要学会积极寻求专业的心理咨询帮助，以便更好地应对挑战，实现自我成长。"
+        android:textSize="@dimen/dp_18" />
+
+        <ImageView
+            android:layout_width="346dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:src="@mipmap/img_new1" />
+
+        <ImageView
+            android:layout_width="346dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_64"
+            android:src="@mipmap/img_new2" />
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

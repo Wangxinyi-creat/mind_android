@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/dp_12"
+    android:layout_marginBottom="@dimen/dp_24"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_gi_de868f_s_bbb"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_8">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:id="@+id/iv_image"
+            android:layout_width="@dimen/dp_94"
+            android:layout_height="@dimen/dp_94"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_touxiang" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="兴趣与工作、专业适配性测试专业适配性测试"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_12"
+                android:gravity="">
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_20"
+                        android:layout_height="@dimen/dp_20"
+                        android:src="@mipmap/icon_checked" />
+
+                    <TextView
+                        android:id="@+id/tv_ren"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:text="200人已测" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="@dimen/dp_57"
+                    android:layout_height="@dimen/dp_39"
+                    android:layout_gravity="bottom"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:background="@drawable/btn_or"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_24"
+                        android:layout_height="@dimen/dp_24"
+                        android:src="@mipmap/icon_dayuhao" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

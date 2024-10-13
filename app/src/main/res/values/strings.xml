@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">心里咨询</string>
+    <string name="error_net">没有网络连接</string>
+
+
+    <!-- 状态布局 -->
+    <string name="status_layout_no_data">空空如也</string>
+    <string name="status_layout_error_request">请求出错，请重试</string>
+    <string name="status_layout_error_network">网络错误，请重试</string>
+    <string name="status_layout_retry">重试</string>
+    <string name="str">简单来说，<font color="#5C9267">心理咨询，是由心理咨询师基于专业心理咨询知识 ，一般通过谈话形式，协助来访者解决心理困扰的过程。</font>也有一些咨询师会使用音乐、绘画、舞动等艺术形式，辅助谈话，与来访者一起工作。
+</string>
+    <string name="title_activity_password">PasswordActivity</string>
+</resources>

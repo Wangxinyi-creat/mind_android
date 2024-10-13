@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.fragment.MyFragment">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_270"
+        android:background="@drawable/bg_my" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_24"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_250"
+                android:layout_marginTop="@dimen/dp_24">
+
+                <com.pj.mind.view.CircleImageView
+                    android:id="@+id/iv_touxiang"
+                    android:layout_width="@dimen/dp_91"
+                    android:layout_height="@dimen/dp_91"
+                    android:layout_marginLeft="@dimen/dp_24"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bg_touxiang" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_16"
+                    android:layout_toRightOf="@+id/iv_touxiang"
+                    android:text="用户"
+                    android:textSize="@dimen/sp_22"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/ren"
+                    android:layout_width="@dimen/dp_180"
+                    android:layout_height="wrap_content"
+
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:src="@mipmap/icon_my_ren" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/dp_16"
+                    android:layout_marginBottom="@dimen/dp_18"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_27"
+                            android:layout_height="@dimen/dp_27"
+                            android:src="@mipmap/icon_rocket" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_4"
+                            android:text="探索我的星球"
+                            android:textSize="@dimen/sp_20"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="@dimen/dp_200"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_4"
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:text="发现自己的人格特质。塑造不同的自己"
+                        android:textColor="#6C6C6C"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_114"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_24"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_16"
+                app:cardCornerRadius="@dimen/dp_12"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/roundbackground_efefef_12"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:id="@+id/ll_report"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_57"
+                            android:layout_height="@dimen/dp_57"
+                            android:src="@mipmap/icon_my_baogao" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_8"
+                            android:text="测评报告" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_suqiu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_57"
+                            android:layout_height="@dimen/dp_57"
+                            android:padding="@dimen/dp_2"
+                            android:src="@mipmap/icon_my_qingsu" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_8"
+                            android:text="倾诉记录" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_yuyue"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_57"
+                            android:layout_height="@dimen/dp_57"
+                            android:padding="@dimen/dp_6"
+                            android:src="@mipmap/icon_my_yuyue" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_8"
+                            android:text="预约记录" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_57"
+                            android:layout_height="@dimen/dp_57"
+                            android:src="@mipmap/icon_my_wenda" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_8"
+                            android:text="我的问答" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/dp_12"-->
+            <!--                android:gravity="center"-->
+            <!--                android:padding="@dimen/dp_16">-->
+
+            <!--                <ImageView-->
+            <!--                    android:layout_width="@dimen/dp_30"-->
+            <!--                    android:layout_height="@dimen/dp_30"-->
+            <!--                    android:src="@mipmap/icon_xuesheng" />-->
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginLeft="@dimen/dp_8"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:text="学生认证"-->
+            <!--                    android:textSize="@dimen/sp_18" />-->
+
+            <!--                <ImageView-->
+            <!--                    android:layout_width="@dimen/dp_24"-->
+            <!--                    android:layout_height="@dimen/dp_24"-->
+            <!--                    android:layout_marginRight="@dimen/dp_16"-->
+            <!--                    android:src="@mipmap/icon_arrow_right" />-->
+            <!--            </LinearLayout>-->
+
+            <!--            <View-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="1px"-->
+            <!--                android:layout_marginLeft="@dimen/dp_12"-->
+            <!--                android:layout_marginRight="@dimen/dp_12"-->
+            <!--                android:background="#bbbbbb" />-->
+
+            <LinearLayout
+                android:id="@+id/ll_shoucang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:gravity="center"
+                android:padding="@dimen/dp_8">
+
+                <ImageView
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:padding="@dimen/dp_3"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:src="@mipmap/icon_shoucang" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_weight="1"
+                    android:text="我的收藏"
+                    android:textSize="@dimen/sp_18" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_24"
+                    android:layout_marginRight="@dimen/dp_16"
+                    android:src="@mipmap/icon_arrow_right" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:background="#bbbbbb" />
+
+            <TextView
+                android:id="@+id/login_out"
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="@dimen/dp_46"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_24"
+                android:background="@drawable/roundbackground_blue_50"
+                android:gravity="center"
+                android:text="退出登录"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_18" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

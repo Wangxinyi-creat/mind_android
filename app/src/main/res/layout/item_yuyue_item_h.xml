@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_229"
+    android:layout_height="@dimen/dp_91"
+    android:layout_marginRight="@dimen/dp_24"
+    android:background="@drawable/bg_gi_efefef_s_bbb"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <View
+            android:layout_width="@dimen/dp_6"
+            android:layout_height="@dimen/dp_39"
+            android:background="#5C9267" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:text="做个「情绪稳定」的成年人，有那么重要吗？"
+            android:textSize="@dimen/sp_16" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="责怪他人的时候，我实际上是在..."
+        android:textColor="#6c6c6c" />
+
+</LinearLayout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:chat="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp_12">
+
+    <LinearLayout
+        android:id="@+id/ll_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dp_50"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.pj.mind.view.CircleImageView
+            android:id="@+id/touxiang"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/sp_36"
+            android:src="@mipmap/bg_login" />
+
+        <com.cxd.chatview.moudle.ChatView
+            android:id="@+id/left_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:visibility="visible"
+            chat:arrow_direction="left"
+            chat:conner_radius="6dp"
+            chat:fill_color="#FFFFFF"
+            chat:is_arrow_center="true"
+            chat:press_fill_color="#FFFFFF"
+            chat:press_stroke_color="#FFFFFF"
+            chat:stroke_color="#FFFFFF"
+            chat:stroke_width="1px">
+
+            <TextView
+                android:id="@+id/left_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="这是箭头向左的聊天气泡这是箭头向左的聊天气泡这是箭头向左的聊天气泡"
+                android:textColor="#4a4a4a"
+                android:textSize="16sp" />
+        </com.cxd.chatview.moudle.ChatView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_right"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_50"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.cxd.chatview.moudle.ChatView
+            android:id="@+id/right_view"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/dp_8"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            chat:arrow_direction="right"
+            chat:conner_radius="6dp"
+            chat:fill_color="#95ec69"
+            chat:is_arrow_center="true"
+            chat:press_fill_color="#95ec69"
+            chat:press_stroke_color="#95ec69"
+            chat:stroke_color="#95ec69"
+            chat:stroke_width="1px">
+
+            <TextView
+                android:id="@+id/right_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="这是箭头向左的聊天气泡这是箭头向左的聊天气泡这是箭头向左的聊天气泡这是箭头向左的聊天气泡"
+                android:textColor="#4a4a4a"
+                android:textSize="16sp" />
+        </com.cxd.chatview.moudle.ChatView>
+
+        <com.pj.mind.view.CircleImageView
+            android:id="@+id/touxiang2"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/sp_36"
+            android:src="@mipmap/bg_login" />
+    </LinearLayout>
+</RelativeLayout>

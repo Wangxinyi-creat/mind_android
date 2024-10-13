@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_login">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3fffffff"
+        android:fitsSystemWindows="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24"
+        android:background="@drawable/roundbackground_7affffff"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_24">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/font_family"
+            android:gravity="center"
+            android:text="Reday"
+            android:textColor="#F59834"
+            android:textSize="@dimen/sp_36"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_48"
+            android:background="@drawable/solid_f59834"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_12">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="账号:"
+                android:textColor="#F59834"
+                android:textSize="@dimen/sp_20"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:background="@null"
+                android:inputType="text"
+                android:maxLength="20"
+                android:textColor="#F59834"
+                android:textColorHint="@color/color8F97A1"
+                android:textSize="@dimen/sp_20" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_36"
+            android:background="@drawable/solid_f59834"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_12">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="密码:"
+                android:textColor="#F59834"
+                android:textSize="@dimen/sp_20"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:background="@null"
+                android:inputType="text"
+                android:maxLength="20"
+                android:textColor="#F59834"
+                android:textColorHint="@color/color8F97A1"
+                android:textSize="@dimen/sp_20" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/zhuce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_12"
+            android:gravity="center_horizontal"
+            android:text="注册账号"
+            android:textColor="#F59834" />
+
+        <TextView
+            android:id="@+id/commit"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_38"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_24"
+            android:background="@drawable/solid_f59834"
+            android:gravity="center"
+            android:text="登录"
+            android:textColor="#F59834"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+</RelativeLayout>

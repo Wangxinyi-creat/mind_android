@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 圆形ImageView -->
+    <declare-styleable name="RoundImageView">
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_inside_color" format="color" />
+        <attr name="border_outside_color" format="color" />
+    </declare-styleable>
+
+    <!-- 圆形ImageView -->
+    <declare-styleable name="MaxRecyclerView">
+        <attr name="maxHeight" format="dimension" />
+    </declare-styleable>
+
+
+</resources>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".ui.activity.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_con"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
+
+    <RadioGroup
+        android:id="@+id/main_rg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingBottom="@dimen/dp_8"
+        android:background="@color/white"
+        android:visibility="visible">
+
+        <com.pj.mind.view.BottomBarRadioButton
+            android:id="@+id/radio_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="首页"
+            android:textColor="@drawable/bottom_bar_text_color_selector"
+            android:textSize="12sp"
+            app:drawableSize="24dp"
+            app:drawableTop="@drawable/selector_bottom_tab_main" />
+
+        <com.pj.mind.view.BottomBarRadioButton
+            android:id="@+id/radio_faxian"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="活动"
+            android:textColor="@drawable/bottom_bar_text_color_selector"
+            android:textSize="12sp"
+            app:drawableSize="24dp"
+            app:drawableTop="@drawable/selector_bottom_tab_faxian" />
+
+
+
+        <com.pj.mind.view.BottomBarRadioButton
+            android:id="@+id/radio_yuyue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="预约"
+            android:textColor="@drawable/bottom_bar_text_color_selector"
+            android:textSize="12sp"
+            app:drawableSize="24dp"
+            app:drawableTop="@drawable/selector_bottom_tab_yuyue" />
+
+        <com.pj.mind.view.BottomBarRadioButton
+            android:id="@+id/radio_my"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="我的"
+            android:textColor="@drawable/bottom_bar_text_color_selector"
+            android:textSize="12sp"
+            app:drawableSize="24dp"
+            app:drawableTop="@drawable/selector_bottom_tab_my" />
+
+    </RadioGroup>
+</RelativeLayout>
