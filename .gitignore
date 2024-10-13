@@ -15,9 +15,16 @@ captures/
 *.apk
 output.json
 
-# IntelliJ
+# IntelliJ IDEA files
+.DS_Store
 *.iml
 .idea/
+.idea/caches
+.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
 misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
